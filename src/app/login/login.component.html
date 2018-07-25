@@ -1,3 +1,35 @@
-<p>
-  login works!
-</p>
+<header>
+  <div class="container">
+  <div class="row">
+    <div>
+      <div>
+      <nav>
+          <ul class="tabs tabs-fixed-width tabs-transparent">
+            <li class="tab" >
+              <a routerLink='/login' routerLinkActive='active'>Log In</a>
+            </li>
+            <li class="tab" >
+              <a  routerLink='/signup' routerLinkActive='active'>Sign Up</a>
+            </li>
+          </ul>
+        </nav>
+        <div>
+          <div>
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+<div class="login">
+  <div class="" style="text-align:center">
+  <h2 id = "h3">Login</h2>
+  <input [(ngModel)]="logon.email" type = "email" placeholder="E-mail Address"><br>
+  <input [(ngModel)]="logon.password" type="password" placeholder="Password"><br>
+  <button class="button" (click)="loginUser()" type="button" name="button"> Login</button>
+  </div>
+</div>

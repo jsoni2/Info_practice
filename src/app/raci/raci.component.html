@@ -1,3 +1,60 @@
-<p>
-  raci works!
-</p>
+<header>
+  <div class="container">
+<div>
+    <div class = "table1" >
+      <label id = "group">Group: </label>
+        <select [(ngModel)] = "ProductDetails.Group" (ngModelChange) = "getData(ProductDetails.Group)"  style="margin:10px ">
+          <option *ngFor = "let use of ProductDetails" value="{{use}}" >
+            {{use.Group}}
+          </option>
+        </select>
+<label id = "group">Activity: </label>
+  <select [(ngModel)] = "ProductDetails.Activity" (ngModelChange) = "SearchActivity(ProductDetails.Activity)" style="margin:10px ">
+    <option style="display:none"></option>
+        <option *ngFor = "let use1 of ProductDetails" >
+          {{use1.Activity}}
+      </option>
+  </select>
+  <label id = "group">Responsible: </label>
+    <select [(ngModel)] = "ProductDetails.Developer" (ngModelChange) = "SearchRole(user1.responsible)" style="margin:10px">
+        <option *ngFor = "let use2 of ProductDetails">
+            {{use2.Developer}}
+        </option>
+    </select>
+</div>
+<button id="submit" (click)="logout()" type="submit" name="button" routerLink='/logout' routerLinkActive='active'> Logout</button>
+
+    </div>
+  </div>
+</header>
+
+          <table id="customers">
+            <thead>
+              <tr >
+                <th>Group</th>
+                <th>Activity</th>
+                <th>Developer</th>
+                <th>Agile Project Manager</th>
+				        <th>Scrum Master</th>
+				        <th>SDET</th>
+                <th>TechLead</th>
+                <th>TechnicalPO</th>
+                <th>Architect</th>
+                <th>Automation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor = "let Prod of ProductDetails">
+                <td >{{Prod.Group}}</td>
+                <td>{{Prod.Activity}}</td>
+				        <td>{{Prod.Developer}}</td>
+		            <td>{{Prod.Agile_Project_Owner}}</td>
+				        <td>{{Prod.Scrum_Master}}</td>
+				        <td>{{Prod.SDET}}</td>
+                <td>{{Prod.TechLead}}</td>
+                <td>{{Prod.TechnicalPO}}</td>
+                <td>{{Prod.Architect}}</td>
+                <td>{{Prod.Automation}}</td>
+              </tr>
+            </tbody>
+          </table>
