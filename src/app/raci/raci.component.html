@@ -15,7 +15,7 @@
           {{use1.Activity}}
       </option>
   </select>
-  <label id = "group">Responsible: </label>
+  <label id = "group">Role: </label>
     <select [(ngModel)] = "ProductDetails.Developer" (ngModelChange) = "SearchRole(user1.responsible)" style="margin:10px">
         <option *ngFor = "let use2 of ProductDetails">
             {{use2.Developer}}

@@ -3,8 +3,8 @@ import {UserService} from '../user.service';
 import { AppModule } from '../app.module';
 import {Http, Response} from '@angular/http';
 import {HttpClient} from '@angular/common/http';
-import {LocalStorageService} from '../LocalStorageService';
-
+import {HttpErrorResponse} from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,32 +16,37 @@ import {LocalStorageService} from '../LocalStorageService';
 
 export class RaciComponent {
 public ProductDetails = [];
+public Roles = [];
+public Activities = [];
+public Groups = [];
 
-constructor(private userService: UserService, private http: HttpClient){} //private localstorageService: LocalStorageService){}
-//displaytoken: string;
-//access_token:string;
+constructor(private userService: UserService, private http: HttpClient, private route: Router){}
+
 
   ngOnInit(){
-    //this.displaytoken = this.localstorageService.GetValueFromLocalStorage().access_token;
-    this.userService.getData(this.ProductDetails).subscribe(data => this.ProductDetails = data);
-    console.log("from raci");
 
-  }
+    if(localStorage.getItem('token'))
+    {
+      this.getData();
+    }
+      else{
+        this.route.navigate(['/login']);
+      }
+    }
 
-//  getData(){
-  //  this.userService.getData().subscribe(
-    //  response => {
-      //  console.log(response);
-      //},
-      //error => {
-      //  console.log('error', error);
-      //}
 
-    //);
+  getData()
+  {
+    this.userService.getData().subscribe(response =>
+       {
+         this.ProductDetails = response;
+         console.log(response);
+  },
+  error =>  {
+    console.log('error', error);
+  });
 }
-
-
-
+}
 
 /*SearchRole(Products:array)
 {
@@ -54,12 +59,3 @@ constructor(private userService: UserService, private http: HttpClient){} //priv
 
     }
   }*/
-/*  makeRequest(): void {
-    this.loading = true;
-    this.http.request('http://jsonplaceholder.typicode.com/posts/1')
-    .subscribe((res: Response) => {
-      this.data = res.json();
-      this.loading = false;
-    });
-}
-}*/

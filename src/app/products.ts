@@ -1,4 +1,4 @@
-export interface Products {
+export class Products {
   Id: number;
   Group: string;
   Activity: string;

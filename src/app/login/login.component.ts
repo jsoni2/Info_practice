@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AppModule } from '../app.module';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-import {LocalStorageService} from '../LocalStorageService';
+import {HttpErrorResponse} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
@@ -13,30 +14,33 @@ import {LocalStorageService} from '../LocalStorageService';
 export class LoginComponent implements OnInit {
   logon;
 
-  constructor(private userService:UserService, private route: Router){}//private localstorageService: LocalStorageService) { }
+  constructor(private userService:UserService, private route: Router) { }
 
   ngOnInit() {
     this.logon = {
         email:'',
         password:''
     };
-  }
+  //  if ( localStorage.getItem('token'))
+    //{
+      //this.route.navigate(['/raci']);
+    //}
+}
 
   loginUser(){
     this.userService.login(this.logon).subscribe(
-      response => {
+      (response : any) => {
         console.log(response);
-        this.localstorageService.SetAuthorization();//'userToken', response.access_token);
+        localStorage.setItem('token', response['key']);
         this.route.navigate(['/raci']);
-        console.log("after login");
+      //  console.log("after login");
       },
-      error => {
+
+      error =>  {
         console.log('error', error);
       }
-
-    );}
-    //this.logon.password = '';
-    //this.logon.email = '';
+    );
+  }
 
 
 }
