@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+/*import { Component, OnInit } from '@angular/core';
 import { AppModule } from '../app.module';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
@@ -19,10 +19,12 @@ export class LogoutComponent implements OnInit {
 
   }
 
-  logout(){
+  /logoutUser(){
     this.userService.logout(this.loggedout).subscribe(
       response => {
         console.log(response);
+        console.log("from logout");
+        localStorage.removeItem('token');
         this.route.navigate(['/logout']);
       },
       error => {
@@ -35,3 +37,4 @@ export class LogoutComponent implements OnInit {
   }
 
 }
+*/

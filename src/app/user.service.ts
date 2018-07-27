@@ -20,29 +20,28 @@ httpHeaders = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'
   }
 
   login(logindata): Observable<any> {
-
     return this.http.post('http://loginapi.com:8000/api/v1/rest-auth/login/', logindata)
-
 }
 
 logout(logoutData): Observable<any> {
   return this.http.post('http://loginapi.com:8000/api/v1/rest-auth/logout/', logoutData)
-
 }
 
 getData() : Observable<any> {
        return this.http.get('http://loginapi.com:8000/api/v1/raci/', this.getAuthHeaders());
-
    }
 getAuthHeaders()
 {
   const token = localStorage.getItem('token');
-  console.log("from getauth");
-  console.log(token);
+  //console.log("from getauth");
+  //console.log(token);
     const httpHeaders = new HttpHeaders(
       {
       'Authorization': 'Token ' + token});
     return { headers: httpHeaders};
 }
+getUserDetails() : Observable<any> {
+       return this.http.get('http://loginapi.com:8000/api/v1/user/',this.getAuthHeaders());
+   }
 
 }

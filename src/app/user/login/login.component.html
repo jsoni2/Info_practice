@@ -1,0 +1,12 @@
+<div class="login">
+  <div class="" style="text-align:center">
+  <h2 id = "h3">Login</h2>
+  <input [(ngModel)]="logon.email" type = "email" placeholder="E-mail Address"><br>
+  <input [(ngModel)]="logon.password" type="password" placeholder="Password"><br>
+  <div *ngIf = "visible"></div>
+  <button class="button" (click)="loginUser()" type="button" name="button"> Login</button>
+  </div>
+</div>
+<div>
+  
+  <div>

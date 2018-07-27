@@ -1,3 +1,8 @@
+<div style="color:red">
+  <div>First Name:{{userdetail?.first_name}}</div><br>
+  <div>Last Name:{{userdetail?.last_name}}</div><br>
+</div>
+
 <header>
   <div class="container">
 <div>
@@ -22,7 +27,7 @@
         </option>
     </select>
 </div>
-<button id="submit" (click)="logout()" type="submit" name="button" routerLink='/logout' routerLinkActive='active'> Logout</button>
+<button id="submit" (click)="logoutUser()" type="submit" name="button" routerLink='/logout' routerLinkActive='active'> Logout</button>
 
     </div>
   </div>
